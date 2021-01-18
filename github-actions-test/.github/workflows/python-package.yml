@@ -1,0 +1,30 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python package
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    steps:
+    - name: Pueba de script en ciberc desarrollo selfhost via CI/CD
+      run: |
+        rm -rf prueba
+        git clone https://github.com/Raul-Flores/prueba.git
+        cd prueba
+        pip install netmiko
+        python3 netmiko-test-cicd.py
+        sleep 60
+        exit
+
